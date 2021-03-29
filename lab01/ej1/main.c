@@ -41,12 +41,38 @@ char *parse_filepath(int argc, char *argv[]) {
 unsigned int array_from_file(int array[],
            unsigned int max_size,
            const char *filepath) {
-    //your code here!!!
+
+    FILE * archivo;
+    unsigned int length;
+
+    archivo = fopen(filepath, "r");
+    fscanf(archivo, "%u", &length);
+
+    if(length>max_size){
+        printf("El arreglo es demasiado grande, solo se tomarán los primeros %d valores\n", max_size);
+        length = max_size;
+    }
+
+    for(unsigned int i=0; i<length ;i++){
+        fscanf(archivo, "%d", array+i);
+    }
+    fclose(archivo);
+
+    return length;
 
 }
 
 void array_dump(int a[], unsigned int length) {
-    //your code here!!!!!
+    
+    //Checkear si no se puede optimizar más
+    printf("[");
+    for(unsigned int i=0; i<length; i++){
+        if(i != 0){
+            printf(",");
+        }
+        printf(" %d", a[i]);
+    }
+    printf("]\n");
 }
 
 
