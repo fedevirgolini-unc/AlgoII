@@ -41,26 +41,87 @@ char *parse_filepath(int argc, char *argv[]) {
 unsigned int array_from_file(int array[],
            unsigned int max_size,
            const char *filepath) {
-    //your code here!!!
+
+    FILE * archivo;
+    unsigned int length;
+
+    archivo = fopen(filepath, "r");
+    fscanf(archivo, "%u", &length);
+
+    if(length>max_size){
+        printf("El arreglo es demasiado grande, solo se tomarán los primeros %d valores\n", max_size);
+        length = max_size;
+    }
+
+    for(unsigned int i=0; i<length ;i++){
+        fscanf(archivo, "%d", array+i);
+    }
+    fclose(archivo);
+
+    return length;
 
 }
 
 void array_dump(int a[], unsigned int length) {
-    //your code here!!!!!
+    
+    //Checkear si no se puede optimizar más
+    printf("[");
+    for(unsigned int i=0; i<length; i++){
+        if(i != 0){
+            printf(",");
+        }
+        printf(" %d", a[i]);
+    }
+    printf("]\n");
+
 }
 
+unsigned int get_length(unsigned int max_size){
 
-int main(int argc, char *argv[]) {
-    char *filepath = NULL;
+    unsigned int length;
 
-    /* parse the filepath given in command line arguments */
-    filepath = parse_filepath(argc, argv);
-    
+    printf("Ingrese el tamaño del arreglo:\n(debe ser un número positivo menor o igual a %d)\n", max_size);
+    int scanf_result = scanf("%u", &length);
+
+    if (scanf_result <= 0) {
+            printf("Error al leer un número desde teclado\n");
+            exit(EXIT_FAILURE);
+        }
+
+    while(length>max_size){
+        printf("El valor ingresado es incorrecto, intente nuevamente\n");
+        scanf_result = scanf("%u", &length);
+    }
+
+    return length;
+}
+
+void pedir_arreglo(int a[], unsigned int length){
+
+    printf("Ahora debe ingresar los elementos del arreglo\n(deben ser números enteros)\n");
+
+    for(unsigned int i=0; i<length; i++){
+        printf("- Ingrese el elemento %u: ", i);
+        int scanf_result = scanf("%d", a+i);
+
+        if (scanf_result <= 0) {
+            printf("Error al leer un número desde teclado\n");
+            exit(EXIT_FAILURE);
+        }
+    }
+
+}
+
+int main() {
+ 
     /* create an array of MAX_SIZE elements */
     int array[MAX_SIZE];
+    unsigned int length;
+
     
-    /* parse the file to fill the array and obtain the actual length */
-    unsigned int length = array_from_file(array, MAX_SIZE, filepath);
+    length = get_length(MAX_SIZE);
+
+    pedir_arreglo(array, length);
     
     /*dumping the array*/
     array_dump(array, length);
