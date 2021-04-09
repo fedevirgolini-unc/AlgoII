@@ -26,7 +26,13 @@ void selection_sort(int a[], unsigned int length) {
 
 
 static void insert(int a[], unsigned int i) {
-    /* copiá acá la implementación que hiciste en el ejercicio 1 */
+    
+    unsigned int j = i;
+    
+    while (j>0 && goes_before(a[j], a[j-1])){
+        swap(a, j-1, j);
+        --j;
+    }
 }
 
 void insertion_sort(int a[], unsigned int length) {
@@ -37,11 +43,39 @@ void insertion_sort(int a[], unsigned int length) {
 
 
 static unsigned int partition(int a[], unsigned int izq, unsigned int der) {
-    /* copiá acá la implementación que hiciste en el ejercicio 3 */
+
+    unsigned int ppiv = izq;
+    unsigned int indice_izq = izq + 1;
+    unsigned int indice_der = der;
+    
+    while (indice_izq <= indice_der) {
+        
+        if (goes_before(a[indice_izq], a[ppiv])) {
+            ++indice_izq;
+        }
+        else if (goes_before(a[ppiv], a[indice_der])) {
+            --indice_der;
+        }
+        else if (goes_before(a[ppiv], a[indice_izq]) && goes_before(a[indice_der], a[ppiv])) {
+            swap(a, indice_izq, indice_der);
+        }
+        
+    }
+    
+    swap(a, ppiv, indice_der);
+    
+    return indice_der;
 }
 
 static void quick_sort_rec(int a[], unsigned int izq, unsigned int der) {
-    /* copiá acá la implementación que hiciste en el ejercicio 2 */
+    
+    unsigned int ppiv = 0u;
+    
+    if(izq < der) {
+        ppiv = partition(a, izq, der);
+        quick_sort_rec(a, izq, ppiv);
+        quick_sort_rec(a, ppiv+1, der);
+    }
 }
 
 void quick_sort(int a[], unsigned int length) {

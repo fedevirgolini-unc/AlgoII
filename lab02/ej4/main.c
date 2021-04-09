@@ -54,6 +54,8 @@ int main(int argc, char *argv[]) {
     /* parse the file to fill the array and obtain the actual length */
     unsigned int length = array_from_file(array, MAX_SIZE, filepath);
 
+/* SELECTION SORT */
+
     /* create a copy of the array, to do some checks later */
     int copy[MAX_SIZE];
     array_copy(copy, array, length);
@@ -70,29 +72,55 @@ int main(int argc, char *argv[]) {
     printf("statistics for selection_sort\n");
     printf("time elapsed=%g,    comparisons: %10u,    swaps: %10u\n", calculate_elapsed_time(), comparisons_number(), swaps_number());
     
-    /* all the same for insertion_sort */
-    /* Usando la idea de las líneas de códigos anteriores
-       muestre las estadísticas (tiempo de ejecución, número de comparaciones e 
-       intercambios realizados) para insertion_sort. No te olvides que antes debes
-       copiar el arreglo original, resetear los contadores y setear el tiempo.  
-    */
-    /* needs implementation */
+/* INSERTION SORT */
 
+    /* create a copy of the array, to do some checks later */
+    int copy_2[MAX_SIZE];
+    array_copy(copy_2, array, length);
+    
+    /* reset counters and set time */
+    reset_comparisons_counter();
+    reset_swaps_counter();
+    set_current_time();
+    
+    /* do the actual sorting */
+    insertion_sort(copy_2, length);
+    
+    /* show statistics for insertion_sort */
+    printf("\n");
+    printf("statistics for insertion_sort\n");
+    printf("time elapsed=%g,    comparisons: %10u,    swaps: %10u\n", calculate_elapsed_time(), comparisons_number(), swaps_number());
+    
+/* QUICK SORT */
 
-    /* all the same for quick_sort */
-    /* Usando la idea de las líneas de códigos anteriores
-       muestre las estadísticas (tiempo de ejecución, número de comparaciones e 
-       intercambios realizados) para quick_sort. No te olvides que antes debes
-       copiar el arreglo original, resetear los contadores y setear el tiempo.  
-    */
-    /* needs implementation */
+    /* create a copy of the array, to do some checks later */
+    int copy_3[MAX_SIZE];
+    array_copy(copy_3, array, length);
+    
+    /* reset counters and set time */
+    reset_comparisons_counter();
+    reset_swaps_counter();
+    set_current_time();
+    
+    /* do the actual sorting */
+    quick_sort(copy_3, length);
+    
+    /* show statistics for quick_sort */
+    printf("\n");
+    printf("statistics for quick_sort\n");
+    printf("time elapsed=%g,    comparisons: %10u,    swaps: %10u\n", calculate_elapsed_time(), comparisons_number(), swaps_number());
 
-
+/*  checks */
   
     /* check if it is sorted */
-    // assert(array_is_sorted(array, length));
+    assert(array_is_sorted(copy, length));
+    assert(array_is_sorted(copy_2, length));
+    assert(array_is_sorted(copy_3, length));
 
     /* check if it is a permutation of original */
-    // assert(array_is_permutation_of(copy, array, length));
+    assert(array_is_permutation_of(array, copy, length));
+    assert(array_is_permutation_of(array, copy_2, length));
+    assert(array_is_permutation_of(array, copy_3, length));
+    
     return (EXIT_SUCCESS);
 }
