@@ -9,17 +9,39 @@
 
 
 static unsigned int partition(int a[], unsigned int izq, unsigned int der) {
-    /* Needs implementation */
 
-    /* Permutes elements of a[izq..der] and returns pivot such that:
-     - izq <= pivot <= der
-     - elements in a[izq,pivot) all 'go_before' (according to function goes_before) a[pivot]
-     - a[pivot] 'goes_before' all the elements in a(pivot,der]
-    */
+    unsigned int ppiv = izq;
+    unsigned int indice_izq = izq + 1;
+    unsigned int indice_der = der;
+    
+    while (indice_izq <= indice_der) {
+        
+        if (goes_before(a[indice_izq], a[ppiv])) {
+            ++indice_izq;
+        }
+        else if (goes_before(a[ppiv], a[indice_der])) {
+            --indice_der;
+        }
+        else if (goes_before(a[ppiv], a[indice_izq]) && goes_before(a[indice_der], a[ppiv])) {
+            swap(a, indice_izq, indice_der);
+        }
+        
+    }
+    
+    swap(a, ppiv, indice_der);
+    
+    return indice_der;
 }
 
 static void quick_sort_rec(int a[], unsigned int izq, unsigned int der) {
-    /* copiá acá la implementación que hiciste en el ejercicio 3 */
+    
+    unsigned int ppiv = 0u;
+    
+    if(izq < der) {
+        ppiv = partition(a, izq, der);
+        quick_sort_rec(a, izq, ppiv);
+        quick_sort_rec(a, ppiv+1, der);
+    }
 
 }
 
