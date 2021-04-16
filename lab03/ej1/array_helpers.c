@@ -59,6 +59,15 @@ void array_from_file(WeatherTable array, const char *filepath) {
         }
         Weather weather = weather_from_file(file);
         /* Completar acá: Guardar la medición de clima en el arreglo multidimensional */
+        
+        array[k_year - FST_YEAR][k_month - 1][k_day - 1]._average_temp = weather._average_temp;
+        array[k_year - FST_YEAR][k_month - 1][k_day - 1]._max_temp = weather._max_temp;
+        array[k_year - FST_YEAR][k_month - 1][k_day - 1]._min_temp = weather._min_temp;
+        array[k_year - FST_YEAR][k_month - 1][k_day - 1]._pressure = weather._pressure;
+        array[k_year - FST_YEAR][k_month - 1][k_day - 1]._moisture = weather._moisture;
+        array[k_year - FST_YEAR][k_month - 1][k_day - 1]._rainfall = weather._rainfall;
+            
+        
     }
     fclose(file);
 }
