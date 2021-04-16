@@ -47,4 +47,16 @@ void array_dump(WeatherTable a);
  */
 void array_from_file(WeatherTable a, const char *filepath);
 
+/**
+ * @brief Print the content of the array 'a' into stdout.
+ * @param[in] a array to dump in stdout
+ */
+void print_array(int a[], unsigned int length);
+
+/**
+ * @brief Print the content of the array 'a' into stdout.
+ * @param[in] a array to dump in stdout
+ */
+void print_array_month(t_month a[], unsigned int length);
+
 #endif

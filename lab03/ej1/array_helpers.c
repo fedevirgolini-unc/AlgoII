@@ -84,3 +84,25 @@ void array_from_file(WeatherTable array, const char *filepath) {
     }
     fclose(file);
 }
+
+void print_array(int a[], unsigned int length) {
+    for (unsigned int i = 0u; i < length; ++i) {
+        fprintf(stdout, "%i", a[i]);
+        if (i < length - 1) {
+            fprintf(stdout, " ");
+        } else {
+            fprintf(stdout, "\n");
+        }
+    }
+}
+
+void print_array_month(t_month a[], unsigned int length) {
+    for (unsigned int i = 0u; i < length; ++i) {
+        fprintf(stdout, "%i", a[i]);
+        if (i < length - 1) {
+            fprintf(stdout, " ");
+        } else {
+            fprintf(stdout, "\n");
+        }
+    }
+}
