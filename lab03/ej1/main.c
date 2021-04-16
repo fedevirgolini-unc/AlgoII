@@ -10,6 +10,7 @@
 
 /* Then, this project's includes, alphabetically ordered */
 #include "array_helpers.h"
+#include "weather_utils.h"
 
 /**
  * @brief print usage help
@@ -50,6 +51,28 @@ char *parse_filepath(int argc, char *argv[]) {
     return (result);
 }
 
+void print_array(int a[], unsigned int length) {
+    for (unsigned int i = 0u; i < length; ++i) {
+        fprintf(stdout, "%i", a[i]);
+        if (i < length - 1) {
+            fprintf(stdout, " ");
+        } else {
+            fprintf(stdout, "\n");
+        }
+    }
+}
+
+void print_array_month(t_month a[], unsigned int length) {
+    for (unsigned int i = 0u; i < length; ++i) {
+        fprintf(stdout, "%i", a[i]);
+        if (i < length - 1) {
+            fprintf(stdout, " ");
+        } else {
+            fprintf(stdout, "\n");
+        }
+    }
+}
+
 /**
  * @brief Main program function
  *
@@ -71,7 +94,23 @@ int main(int argc, char *argv[]) {
     array_from_file(array, filepath);
 
     /* show the ordered array in the screen */
-    array_dump(array);
+    //array_dump(array);
+    
+    /* print the lowest temperature */
+    printf ("The lowest temperature ever is %d\n", lowest_min_temp(array));
+    
+    
+    /* print the array wich contains the highest temperature os each year */
+    int high_temp_years_array[YEARS];
+    
+    printf("the highest teperatures of each year are:\n");
+    high_temp_years(array, high_temp_years_array);
+    print_array(high_temp_years_array, YEARS);
+    
+    /* print the array wich contains the most rainy month of each year */
+    t_month most_rainfall_months_array[YEARS];
+    most_rainfall_months(array, most_rainfall_months_array);
+    print_array_month(most_rainfall_months_array, YEARS);
 
     return (EXIT_SUCCESS);
 }
