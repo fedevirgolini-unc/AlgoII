@@ -103,11 +103,12 @@ int main(int argc, char *argv[]) {
     /* print the array wich contains the highest temperature os each year */
     int high_temp_years_array[YEARS];
     
-    printf("the highest teperatures of each year are:\n");
+    printf("\nThe highest teperatures of each year are:\n");
     high_temp_years(array, high_temp_years_array);
     print_array(high_temp_years_array, YEARS);
     
     /* print the array wich contains the most rainy month of each year */
+    printf("\nThe rainiest mont of each year are:\n");
     t_month most_rainfall_months_array[YEARS];
     most_rainfall_months(array, most_rainfall_months_array);
     print_array_month(most_rainfall_months_array, YEARS);
