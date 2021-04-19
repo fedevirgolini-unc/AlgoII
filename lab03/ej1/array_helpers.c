@@ -73,12 +73,12 @@ void array_from_file(WeatherTable array, const char *filepath) {
             exit(EXIT_FAILURE);
         }
         
-        array[k_year - FST_YEAR][k_month - 1][k_day - 1]._average_temp = weather._average_temp;
-        array[k_year - FST_YEAR][k_month - 1][k_day - 1]._max_temp = weather._max_temp;
-        array[k_year - FST_YEAR][k_month - 1][k_day - 1]._min_temp = weather._min_temp;
-        array[k_year - FST_YEAR][k_month - 1][k_day - 1]._pressure = weather._pressure;
-        array[k_year - FST_YEAR][k_month - 1][k_day - 1]._moisture = weather._moisture;
-        array[k_year - FST_YEAR][k_month - 1][k_day - 1]._rainfall = weather._rainfall;
+        array[k_year - FST_YEAR][k_month - 1][k_day - FST_DAY]._average_temp = weather._average_temp;
+        array[k_year - FST_YEAR][k_month - 1][k_day - FST_DAY]._max_temp = weather._max_temp;
+        array[k_year - FST_YEAR][k_month - 1][k_day - FST_DAY]._min_temp = weather._min_temp;
+        array[k_year - FST_YEAR][k_month - 1][k_day - FST_DAY]._pressure = weather._pressure;
+        array[k_year - FST_YEAR][k_month - 1][k_day - FST_DAY]._moisture = weather._moisture;
+        array[k_year - FST_YEAR][k_month - 1][k_day - FST_DAY]._rainfall = weather._rainfall;
             
         
     }
