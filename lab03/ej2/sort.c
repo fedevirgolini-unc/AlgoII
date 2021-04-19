@@ -50,7 +50,7 @@ static void quick_sort_rec(player_t a[], unsigned int izq, unsigned int der) {
     
         ppiv = partition(a, izq, der);
         
-    if (ppiv > 0) {
+        if (ppiv > 0) {
             quick_sort_rec(a, izq, ppiv-1);
         }
         quick_sort_rec(a, ppiv+1, der);
@@ -60,9 +60,7 @@ static void quick_sort_rec(player_t a[], unsigned int izq, unsigned int der) {
 
 bool goes_before(player_t x, player_t y){
     
-    bool goes_before = false;
-    
-    goes_before = x.rank < y.rank;
+    bool goes_before = (x.rank <= y.rank);
     
     return goes_before;
 }
