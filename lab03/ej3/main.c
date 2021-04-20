@@ -20,19 +20,18 @@ int main(void) {
     int x = 1;
     person_t m = {90, 'M'};
     int a[] = {0, 1, 2, 3};
-
-    /* Completar aquí:
-       Al finalizar la ejecución las variables deben tener los siguientes valores
-       x = 9
-       m = (100, F)
-       a[1] = 42
-
-       Las restricciones son:
-       - No usar las variables 'x', 'm' y 'a' en la parte izquierda de alguna asignación.
-       - Se pueden agregar líneas de código, pero no modificar las que ya existen.
-       - Se pueden declarar hasta 2 punteros.
-       AYUDA: podes usar GDB para consultares valores de variables y la dirección de memoria donde estan alojadas.
-    */
+       
+    int *px = NULL;
+    person_t *pp = NULL;
+    int *pa = NULL;
+    
+    px = &x;
+    pp = &m;
+    pa = &a[0];
+    
+    *px = 9;
+    (*pp).age = 100;
+    *(pa+1) = 42;
 
     printf("x = %d\n", x);
     printf("m = (%d, %c)\n", m.age, m.name_initial);
