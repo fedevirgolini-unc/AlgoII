@@ -24,11 +24,11 @@ static unsigned int partition(player_t a[], unsigned int izq, unsigned int der) 
     player_t *p = NULL;
     p = &a[0];   
     while (indice_izq <= indice_der) {
-        if (goes_before(a[indice_izq], a[ppiv])) {
+        if (goes_before(*(p+indice_izq), *(p+ppiv))) {
             ++indice_izq;
-        } else if (goes_before(a[ppiv], a[indice_der])) {
+        } else if (goes_before(*(p+ppiv), *(p+indice_der))) {
             --indice_der;
-        } else if (goes_before(a[ppiv], a[indice_izq]) && goes_before(a[indice_der], a[ppiv])) {
+        } else if (goes_before(*(p+ppiv), *(p+indice_izq)) && goes_before(*(p+indice_der), *(p+ppiv))) {
             swap(p, indice_izq, indice_der);
         }
     }
