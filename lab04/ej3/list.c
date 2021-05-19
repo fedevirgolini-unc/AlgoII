@@ -19,7 +19,7 @@ list empty() {
 }
 
 list addl(list_elem e, list l) {
-    node new_element = malloc(sizeof(node));
+    node new_element = malloc(sizeof(struct _list));
     new_element->elem = e;
     new_element->next = l;
     l = new_element;
@@ -60,6 +60,7 @@ unsigned int length(list l) {
     node i = l;
     while (i != NULL) {
         len++;
+        i = i->next;
     }
     return len;
 }
@@ -73,7 +74,7 @@ list concat(list l1, list l2) {
     return l1;
 }
 
-list_elem index(list l, unsigned int n) {
+list_elem list_index(list l, unsigned int n) {
     assert(length(l) > n);
     node index = l;
     for (unsigned int i = 0; i < n; i++) {

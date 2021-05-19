@@ -51,7 +51,7 @@ list concat(list l1, list l2);
 Adds all elements of l2 in the end of l1
 */
 
-list_elem index(list l, unsigned int n);
+list_elem list_index(list l, unsigned int n);
 /*
 Return the element located in n of the list l
 PRE: length(l) > n

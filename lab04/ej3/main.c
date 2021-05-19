@@ -37,7 +37,7 @@ float average(list l) {
     unsigned int len = length(l);
     if (len > 0) {
         for (unsigned int i = 0u; i < len; ++i) {
-            c += index(l, i);
+            c += list_index(l, i);
         }
         c = c / (float)len;
     }
@@ -47,7 +47,7 @@ float average(list l) {
 list array_to_list(int array[], unsigned int length) {
     list l = empty();
     for (unsigned int i = 0u; i < length; ++i) {
-        addr(l, array[i]);
+        l = addl(array[i], l);
     }
     return l;
 }
