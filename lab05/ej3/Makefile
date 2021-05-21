@@ -16,3 +16,10 @@ $(TARGET): $(OBJECTS)
 
 clean:
 	$(RM) $(OBJECTS) $(TARGET)
+val:
+	valgrind ./$(TARGET) 5
+
+fval:
+	valgrind --leak-check=full ./$(TARGET) 5
+run:
+	./$(TARGET) 5
