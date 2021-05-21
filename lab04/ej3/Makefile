@@ -35,5 +35,8 @@ run4: average
 run5: average
 	./average input/example-unsorted.in
 
+valgrind: average
+	valgrind ./average input/all-negative-100.in
+
 #Compile even if the file (exists and) is compiled (clean in this case)
 PHONY: clean
