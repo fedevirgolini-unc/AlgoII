@@ -157,25 +157,25 @@ abb_elem abb_root(abb tree) {
 
 abb_elem abb_max(abb tree) {
     abb_elem max_e;
-    assert(invrep(tree) !abb_is_empty(tree));
+    assert(invrep(tree) && !abb_is_empty(tree));
     if (tree->right != NULL) {
         max_e = abb_max(tree->right);
     } else {
         max_e = tree->elem;
     }
-    assert(invrep(tree) abb_exists(tree, max_e));
+    assert(invrep(tree) && abb_exists(tree, max_e));
     return max_e;
 }
 
 abb_elem abb_min(abb tree) {
     abb_elem min_e;
-    assert(invrep(tree) !abb_is_empty(tree));
+    assert(invrep(tree) && !abb_is_empty(tree));
     if (tree->left != NULL) {
         min_e = abb_min(tree->left);
     } else {
         min_e = tree->elem;
     }
-    assert(invrep(tree) abb_exists(tree, min_e));
+    assert(invrep(tree) && abb_exists(tree, min_e));
     return min_e;
 }
 
